@@ -27,7 +27,8 @@ The project comprises of:
 
 ## Translations
 
-- [Traditional Chinese](README_ZH_TW.md)
+* [Traditional Chinese](README_ZH_TW.md)
+
 * [Simplified Chinese](README_ZH_CN.md)
 
 ## Table of Contents
@@ -57,6 +58,7 @@ The project comprises of:
   * [Learn about the on-chain program](#learn-about-the-on-chain-program)
     * [Programming on Solana](#programming-on-solana)
   * [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
+  * [Writing the client in Rust](#writing-the-client-in-rust)
   * [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
 
 ## Quick Start
@@ -72,8 +74,8 @@ on your OS, they may already be installed:
 
 * Install node (v14 recommended)
 * Install npm
-* Install the latest Rust stable from <https://rustup.rs/>
-* Install Solana v1.7.11 or later from
+* Install Rust v1.56.1 or later from <https://rustup.rs/>
+* Install Solana v1.10.35 or later from
   <https://docs.solana.com/cli/install-solana-cli-tools>
 
 If this is your first time using Rust, these [Installation
@@ -86,7 +88,7 @@ Notes](README-installation-notes.md) might be helpful.
 1. Set CLI config url to localhost cluster
 
 ```bash
-solana config set --url localhost
+solana config set --url http://127.0.0.1:8899
 ```
 
 2. Create CLI Keypair
@@ -152,7 +154,7 @@ Public key values will differ:
 
 ```bash
 Let's say hello to a Solana account...
-Connection to cluster established: http://localhost:8899 { 'feature-set': 2045430982, 'solana-core': '1.7.8' }
+Connection to cluster established: http://127.0.0.1:8899 { 'feature-set': 2045430982, 'solana-core': '1.7.8' }
 Using account AiT1QgeYaK86Lf9kudqKthQPCWwpG8vFA1bAAioBoF4X containing 0.00141872 SOL to pay for fees
 Using program Dro9uk45fxMcKWGb1eWALujbTssh6DW8mb4x8x3Eq5h6
 Creating account 8MBmHtJvxpKdYhdw6yPpedp6X6y2U9dCpdYaZJdmwV3A to say hello to
@@ -197,6 +199,7 @@ Further questions? Visit us on [Discord](https://discordapp.com/invite/pquxPsq)
 ## Learn about the client
 
 The client in this example is written in TypeScript using:
+
 * [Solana web3.js SDK](https://github.com/solana-labs/solana-web3.js)
 * [Solana web3 API](https://solana-labs.github.io/solana-web3.js)
 
@@ -251,6 +254,7 @@ compiled to [Berkeley Packet Filter
 object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format).
 
 The program is written using:
+
 * [Solana Rust SDK](https://github.com/solana-labs/solana/tree/master/sdk)
 
 ### Programming on Solana
@@ -264,6 +268,7 @@ Programs Overview](https://docs.solana.com/developing/on-chain-programs/overview
 ## Pointing to a public Solana cluster
 
 Solana maintains three public clusters:
+
 * `devnet` - Development cluster with airdrops enabled
 * `testnet` - Tour De Sol test cluster without airdrops enabled
 * `mainnet-beta` -  Main cluster
@@ -279,8 +284,15 @@ solana config set --url devnet
 To point back to the local cluster:
 
 ```bash
-solana config set --url localhost
+solana config set --url http://127.0.0.1:8899
 ```
+
+## Writing the client in Rust
+
+This example details writing the client code in typescript; however
+the Solana client program can be written in any language. For an
+example client written in Rust and an accompanying write up see [this
+repo](https://github.com/ezekiiel/simple-solana-program).
 
 ## Expand your skills with advanced examples
 
