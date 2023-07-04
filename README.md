@@ -11,7 +11,9 @@ Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=git
 https://travis-ci.org/solana-labs/example-helloworld.svg?branch=master
 [travis-url]: https://travis-ci.org/solana-labs/example-helloworld
 
-# Hello world on Solana
+# 0166_solana_hello_world
+
+## Hello world on Solana
 
 This project demonstrates how to use the [Solana Javascript
 API](https://github.com/solana-labs/solana-web3.js) to
@@ -24,33 +26,38 @@ The project comprises of:
   times "hello" has been sent
 
 ## Translations
+
 - [Traditional Chinese](README_ZH_TW.md)
-- [Simplified Chinese](README_ZH_CN.md)
+* [Simplified Chinese](README_ZH_CN.md)
 
 ## Table of Contents
-- [Hello world on Solana](#hello-world-on-solana)
-  - [Table of Contents](#table-of-contents)
-  - [Quick Start](#quick-start)
-    - [Configure CLI](#configure-cli)
-    - [Start local Solana cluster](#start-local-solana-cluster)
-    - [Install npm dependencies](#install-npm-dependencies)
-    - [Build the on-chain program](#build-the-on-chain-program)
-    - [Deploy the on-chain program](#deploy-the-on-chain-program)
-    - [Run the JavaScript client](#run-the-javascript-client)
-    - [Expected output](#expected-output)
-      - [Not seeing the expected output?](#not-seeing-the-expected-output)
-    - [Customizing the Program](#customizing-the-program)
-  - [Learn about Solana](#learn-about-solana)
-  - [Learn about the client](#learn-about-the-client)
-    - [Entrypoint](#entrypoint)
-    - [Establish a connection to the cluster](#establish-a-connection-to-the-cluster)
-    - [Load the helloworld on-chain program if not already loaded](#load-the-helloworld-on-chain-program-if-not-already-loaded)
-    - [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
-    - [Query the Solana account used in the "Hello" transaction](#query-the-solana-account-used-in-the-hello-transaction)
-  - [Learn about the on-chain program](#learn-about-the-on-chain-program)
-    - [Programming on Solana](#programming-on-Solana)
-  - [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
-  - [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
+
+- [0166\_solana\_hello\_world](#0166_solana_hello_world)
+  * [Hello world on Solana](#hello-world-on-solana)
+  * [Translations](#translations)
+  * [Table of Contents](#table-of-contents)
+  * [Quick Start](#quick-start)
+    * [Configure CLI](#configure-cli)
+    * [Start local Solana cluster](#start-local-solana-cluster)
+    * [Install npm dependencies](#install-npm-dependencies)
+    * [Build the on-chain program](#build-the-on-chain-program)
+    * [Deploy the on-chain program](#deploy-the-on-chain-program)
+    * [Run the JavaScript client](#run-the-javascript-client)
+    * [Expected output](#expected-output)
+      * [Not seeing the expected output?](#not-seeing-the-expected-output)
+    * [Customizing the Program](#customizing-the-program)
+  * [Learn about Solana](#learn-about-solana)
+  * [Learn about the client](#learn-about-the-client)
+    * [Entrypoint](#entrypoint)
+    * [Establish a connection to the cluster](#establish-a-connection-to-the-cluster)
+    * [Establish an account to pay for transactions](#establish-an-account-to-pay-for-transactions)
+    * [Check if the helloworld on-chain program has been deployed](#check-if-the-helloworld-on-chain-program-has-been-deployed)
+    * [Send a "Hello" transaction to the on-chain program](#send-a-hello-transaction-to-the-on-chain-program)
+    * [Query the Solana account used in the "Hello" transaction](#query-the-solana-account-used-in-the-hello-transaction)
+  * [Learn about the on-chain program](#learn-about-the-on-chain-program)
+    * [Programming on Solana](#programming-on-solana)
+  * [Pointing to a public Solana cluster](#pointing-to-a-public-solana-cluster)
+  * [Expand your skills with advanced examples](#expand-your-skills-with-advanced-examples)
 
 ## Quick Start
 
@@ -63,11 +70,11 @@ If you decide to open in Gitpod then refer to
 The following dependencies are required to build and run this example, depending
 on your OS, they may already be installed:
 
-- Install node (v14 recommended)
-- Install npm
-- Install the latest Rust stable from https://rustup.rs/
-- Install Solana v1.7.11 or later from
-  https://docs.solana.com/cli/install-solana-cli-tools
+* Install node (v14 recommended)
+* Install npm
+* Install the latest Rust stable from <https://rustup.rs/>
+* Install Solana v1.7.11 or later from
+  <https://docs.solana.com/cli/install-solana-cli-tools>
 
 If this is your first time using Rust, these [Installation
 Notes](README-installation-notes.md) might be helpful.
@@ -95,12 +102,15 @@ solana-keygen new
 This example connects to a local Solana cluster by default.
 
 Start a local Solana cluster:
+
 ```bash
 solana-test-validator
 ```
+
 > **Note**: You may need to do some [system tuning](https://docs.solana.com/running-validator/validator-start#system-tuning) (and restart your computer) to get the validator to run
 
 Listen to transaction logs:
+
 ```bash
 solana logs
 ```
@@ -153,10 +163,11 @@ Success
 
 #### Not seeing the expected output?
 
-- Ensure you've [started the local cluster](#start-local-solana-cluster),
+* Ensure you've [started the local cluster](#start-local-solana-cluster),
   [built the on-chain program](#build-the-on-chain-program) and [deployed the program to the cluster](#deploy-the-on-chain-program).
-- Inspect the program logs by running `solana logs` to see why the program failed.
-  - ```bash
+* Inspect the program logs by running `solana logs` to see why the program failed.
+
+  * ```bash
     Transaction executed in slot 5621:
     Signature: 4pya5iyvNfAZj9sVWHzByrxdKB84uA5sCxLceBwr9UyuETX2QwnKg56MgBKWSM4breVRzHmpb1EZQXFPPmJnEtsJ
     Status: Error processing Instruction 0: Program failed to complete
@@ -186,8 +197,8 @@ Further questions? Visit us on [Discord](https://discordapp.com/invite/pquxPsq)
 ## Learn about the client
 
 The client in this example is written in TypeScript using:
-- [Solana web3.js SDK](https://github.com/solana-labs/solana-web3.js)
-- [Solana web3 API](https://solana-labs.github.io/solana-web3.js)
+* [Solana web3.js SDK](https://github.com/solana-labs/solana-web3.js)
+* [Solana web3 API](https://solana-labs.github.io/solana-web3.js)
 
 ### Entrypoint
 
@@ -240,31 +251,33 @@ compiled to [Berkeley Packet Filter
 object](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format).
 
 The program is written using:
-- [Solana Rust SDK](https://github.com/solana-labs/solana/tree/master/sdk)
+* [Solana Rust SDK](https://github.com/solana-labs/solana/tree/master/sdk)
 
 ### Programming on Solana
 
 To learn more about Solana programming model refer to the [Programming Model
 Overview](https://docs.solana.com/developing/programming-model/overview).
 
-To learn more about developing programs on Solana refer to the [On-Chain 
+To learn more about developing programs on Solana refer to the [On-Chain
 Programs Overview](https://docs.solana.com/developing/on-chain-programs/overview)
 
 ## Pointing to a public Solana cluster
 
 Solana maintains three public clusters:
-- `devnet` - Development cluster with airdrops enabled
-- `testnet` - Tour De Sol test cluster without airdrops enabled
-- `mainnet-beta` -  Main cluster
+* `devnet` - Development cluster with airdrops enabled
+* `testnet` - Tour De Sol test cluster without airdrops enabled
+* `mainnet-beta` -  Main cluster
 
 Use the Solana CLI to configure which cluster to connect to.
 
 To point to `devnet`:
+
 ```bash
 solana config set --url devnet
 ```
 
 To point back to the local cluster:
+
 ```bash
 solana config set --url localhost
 ```
@@ -275,9 +288,9 @@ There is lots more to learn; The following examples demonstrate more advanced
 features like custom errors, advanced account handling, suggestions for data
 serialization, benchmarking, etc...
 
-- [Programming
+* [Programming
   Examples](https://github.com/solana-labs/solana-program-library/tree/master/examples)
-- [Token
+* [Token
   Program](https://github.com/solana-labs/solana-program-library/tree/master/token)
-- [Token Swap
+* [Token Swap
   Program](https://github.com/solana-labs/solana-program-library/tree/master/token-swap)
